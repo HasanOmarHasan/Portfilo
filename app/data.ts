@@ -47,7 +47,7 @@ export const PROJECTS: Project[] = [
     id: 'project1',
     date: '2025',
     technologies: ['Django', 'Django REST Framework', 'PostgreSQL', 'React', 'Tailwind CSS', 'JWT'],
-      video: '/morehealth.MP4' 
+    video: '/morehealth.MP4' 
   },
   {
     name: 'Fresh-Cart (React)',
@@ -93,7 +93,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
   {
     label: 'CV',
-    link: 'https://drive.google.com/drive/folders/17qLVN_bkyLhvKXmiy5svVDE0N44nmZM0?usp=sharing',
+    link: 'https://drive.google.com/file/d/1pwQ9hq5YWZJrjE42gjG-afMO8CUtKVbU/view?usp=sharing',
   }
 ]
 
