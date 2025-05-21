@@ -73,6 +73,7 @@ function ProjectMedia({ video, image }: ProjectMediaProps) {
               loop
               muted
               className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]"
+              
             />
           </MorphingDialogContent>
           <MorphingDialogClose
@@ -110,7 +111,7 @@ function ProjectMedia({ video, image }: ProjectMediaProps) {
               fill
               className="cursor-zoom-in object-cover transition-transform duration-300 hover:scale-105"
               priority
-              
+
             />
           </div>
         </MorphingDialogTrigger>
