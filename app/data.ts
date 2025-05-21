@@ -2,8 +2,11 @@ type Project = {
   name: string
   description: string
   link: string
-  video: string
+  video?: string
   id: string
+  date?: string
+  technologies?: string[]
+  image?: string
 }
 
 type WorkExperience = {
@@ -13,6 +16,7 @@ type WorkExperience = {
   end: string
   link: string
   id: string
+  description?: string
 }
 
 type BlogPost = {
@@ -27,93 +31,70 @@ type SocialLink = {
   link: string
 }
 
+export const PROFESSIONAL_SUMMARY = `As a passionate full-stack web developer, I bring ideas to life through elegant, efficient code and intuitive user experiences. My expertise spans the entire web development spectrum, from crafting responsive front-end interfaces using HTML5, CSS3, JavaScript/TypeScript, React, Next.js, and Tailwind CSS, to building robust back-end systems with Python/Django and Node.js/Express.
+
+I excel in database management with PostgreSQL and various SQL/NoSQL solutions, while ensuring clean API design and seamless integration. My commitment to best practices shows in my use of Git for version control, Docker for consistent deployments, and adherence to Agile methodologies for smooth project delivery.
+
+What sets me apart is my holistic approach to development - combining technical expertise with a keen eye for user experience and performance optimization. I'm particularly excited about integrating AI and automation solutions while maintaining a strong foundation in core web development principles.
+
+I'm always eager to tackle new challenges and would love to discuss how I can help bring your web development ideas to life. Whether you have a specific project in mind or just want to explore possibilities, let's connect for a friendly, no-obligation conversation about creating something amazing together.`
+
 export const PROJECTS: Project[] = [
   {
-    name: 'Motion Primitives Pro',
-    description:
-      'Advanced components and templates to craft beautiful websites.',
-    link: 'https://pro.motion-primitives.com/',
-    video:
-      'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/newProfileItem/d898be8a-7037-4c71-af0c-8997239b050d.mp4?_a=DATAdtAAZAA0',
+    name: 'MoreHealth (Full-Stack Django & React)',
+    description: ' A full-stack health assistant built with Django REST and PostgreSQL, React/Tailwind UI, JWT/email authentication, real-time Socket.IO chat, AI-powered symptom triage, user profiles, a community forum, and an admin dashboard.',
+    link: 'https://github.com/HasanOmarHasan/MoreHealth',
     id: 'project1',
+    date: '2025',
+    technologies: ['Django', 'Django REST Framework', 'PostgreSQL', 'React', 'Tailwind CSS', 'JWT'],
+    image: '/MoreHealth.png'
   },
   {
-    name: 'Motion Primitives',
-    description: 'UI kit to make beautiful, animated interfaces.',
-    link: 'https://motion-primitives.com/',
-    video:
-      'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/XSfIvT7BUWbPRXhrbLed/ee6871c9-8400-49d2-8be9-e32675eabf7e.mp4?_a=DATAdtAAZAA0',
+    name: 'Fresh-Cart (React)',
+    description: 'A modular single-page e-commerce front end that simulates the full shopping workflow—from product browsing to secure checkout—using a mock API.It’s built in React v18, fetches products via Axios into responsive Bootstrap layouts, and manages JWT-protected auth and cart state with Context API—all forms validated with Formik/Yup.',
+    link: 'https://github.com/HasanOmarHasan/Fresh-Cart-E-commers',
     id: 'project2',
+    date: '2024',
+    technologies: ['React', 'Bootstrap', 'JWT', 'Formik', 'Yup'],
+    image: '/Fresh-Cart.png'
   },
+  
 ]
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
-    company: 'Reglazed Studio',
-    title: 'CEO',
-    start: '2024',
+    company: 'Independent Learning & Development',
+    title: 'Full-Stack Developer',
+    start: 'May 2023',
     end: 'Present',
-    link: 'https://ibelick.com',
+    link: 'https://github.com/HasanOmarHasan',
+    description: 'Actively developing full-stack web applications while expanding expertise in modern web technologies. Focus areas include:\n\n- Building responsive web applications using React and Next.js\n- Implementing backend solutions with Node.js and Python\n- Practicing clean code principles and modern development workflows\n- Contributing to open-source projects and building personal portfolio projects',
     id: 'work1',
-  },
-  {
-    company: 'Freelance',
-    title: 'Design Engineer',
-    start: '2022',
-    end: '2024',
-    link: 'https://ibelick.com',
-    id: 'work2',
-  },
-  {
-    company: 'Freelance',
-    title: 'Front-end Developer',
-    start: '2017',
-    end: 'Present',
-    link: 'https://ibelick.com',
-    id: 'work3',
-  },
+  }
 ]
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    title: 'Exploring the Intersection of Design, AI, and Design Engineering',
-    description: 'How AI is changing the way we design',
-    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
+    title: '10 Top vscode shortcut should every developers knows',
+    description: ' اكتر  10 shortcut لازم كل الdevelopers يعرفها في vscode ، البونص اهم واحدة',
+    link: '/blog/top-vscode-shortcut',
     uid: 'blog-1',
-  },
-  {
-    title: 'Why I left my job to start my own company',
-    description:
-      'A deep dive into my decision to leave my job and start my own company',
-    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
-    uid: 'blog-2',
-  },
-  {
-    title: 'What I learned from my first year of freelancing',
-    description:
-      'A look back at my first year of freelancing and what I learned',
-    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
-    uid: 'blog-3',
-  },
+  }
 ]
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     label: 'Github',
-    link: 'https://github.com/ibelick',
-  },
-  {
-    label: 'Twitter',
-    link: 'https://twitter.com/ibelick',
+    link: 'https://github.com/HasanOmarHasan',
   },
   {
     label: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/ibelick',
+    link: 'https://www.linkedin.com/in/hasanomarhasan/',
   },
   {
-    label: 'Instagram',
-    link: 'https://www.instagram.com/ibelick',
-  },
+    label: 'CV',
+    link: 'https://drive.google.com/drive/folders/17qLVN_bkyLhvKXmiy5svVDE0N44nmZM0?usp=sharing',
+  }
 ]
 
-export const EMAIL = 'your@email.com'
+export const EMAIL = 'hassan.omar.shamy@gmail.com'

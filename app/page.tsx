@@ -11,6 +11,7 @@ import {
   MorphingDialogContainer,
 } from '@/components/ui/morphing-dialog'
 import Link from 'next/link'
+import Image from 'next/image'
 import { AnimatedBackground } from '@/components/ui/animated-background'
 import {
   PROJECTS,
@@ -18,6 +19,7 @@ import {
   BLOG_POSTS,
   EMAIL,
   SOCIAL_LINKS,
+  PROFESSIONAL_SUMMARY,
 } from './data'
 
 const VARIANTS_CONTAINER = {
@@ -39,54 +41,111 @@ const TRANSITION_SECTION = {
   duration: 0.3,
 }
 
-type ProjectVideoProps = {
-  src: string
+type ProjectMediaProps = {
+  video?: string
+  image?: string
 }
 
-function ProjectVideo({ src }: ProjectVideoProps) {
-  return (
-    <MorphingDialog
-      transition={{
-        type: 'spring',
-        bounce: 0,
-        duration: 0.3,
-      }}
-    >
-      <MorphingDialogTrigger>
-        <video
-          src={src}
-          autoPlay
-          loop
-          muted
-          className="aspect-video w-full cursor-zoom-in rounded-xl"
-        />
-      </MorphingDialogTrigger>
-      <MorphingDialogContainer>
-        <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
+function ProjectMedia({ video, image }: ProjectMediaProps) {
+  if (video) {
+    return (
+      <MorphingDialog
+        transition={{
+          type: 'spring',
+          bounce: 0,
+          duration: 0.3,
+        }}
+      >
+        <MorphingDialogTrigger>
           <video
-            src={src}
+            src={video}
             autoPlay
             loop
             muted
-            className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]"
+            className="aspect-video w-full cursor-zoom-in rounded-xl"
           />
-        </MorphingDialogContent>
-        <MorphingDialogClose
-          className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
-          variants={{
-            initial: { opacity: 0 },
-            animate: {
-              opacity: 1,
-              transition: { delay: 0.3, duration: 0.1 },
-            },
-            exit: { opacity: 0, transition: { duration: 0 } },
-          }}
-        >
-          <XIcon className="h-5 w-5 text-zinc-500" />
-        </MorphingDialogClose>
-      </MorphingDialogContainer>
-    </MorphingDialog>
-  )
+        </MorphingDialogTrigger>
+        <MorphingDialogContainer>
+          <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
+            <video
+              src={video}
+              autoPlay
+              loop
+              muted
+              className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]"
+            />
+          </MorphingDialogContent>
+          <MorphingDialogClose
+            className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
+            variants={{
+              initial: { opacity: 0 },
+              animate: {
+                opacity: 1,
+                transition: { delay: 0.3, duration: 0.1 },
+              },
+              exit: { opacity: 0, transition: { duration: 0 } },
+            }}
+          >
+            <XIcon className="h-5 w-5 text-zinc-500" />
+          </MorphingDialogClose>
+        </MorphingDialogContainer>
+      </MorphingDialog>
+    )
+  }
+
+  if (image) {
+    return (
+      <MorphingDialog
+        transition={{
+          type: 'spring',
+          bounce: 0,
+          duration: 0.3,
+        }}
+      >
+        <MorphingDialogTrigger>
+          <div className="relative aspect-video w-full overflow-hidden rounded-xl">
+            <Image
+              src={image}
+              alt="Project preview"
+              fill
+              className="cursor-zoom-in object-cover transition-transform duration-300 hover:scale-105"
+              priority
+            />
+          </div>
+        </MorphingDialogTrigger>
+        <MorphingDialogContainer>
+          <MorphingDialogContent className="relative max-h-[90vh] w-[90vw] max-w-[1200px] rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50 sm:w-[85vw]">
+            <div className="relative h-[80vh] w-full">
+              <Image
+                src={image}
+                alt="Project preview"
+                fill
+                className="rounded-xl object-contain"
+                priority
+                sizes="(max-width: 768px) 90vw, (max-width: 1200px) 85vw, 1200px"
+                quality={100}
+              />
+            </div>
+          </MorphingDialogContent>
+          <MorphingDialogClose
+            className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1 shadow-lg dark:bg-zinc-800"
+            variants={{
+              initial: { opacity: 0 },
+              animate: {
+                opacity: 1,
+                transition: { delay: 0.3, duration: 0.1 },
+              },
+              exit: { opacity: 0, transition: { duration: 0 } },
+            }}
+          >
+            <XIcon className="h-5 w-5 text-zinc-500 dark:text-zinc-400" />
+          </MorphingDialogClose>
+        </MorphingDialogContainer>
+      </MorphingDialog>
+    )
+  }
+
+  return null
 }
 
 function MagneticSocialLink({
@@ -136,9 +195,8 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
       >
         <div className="flex-1">
-          <p className="text-zinc-600 dark:text-zinc-400">
-            Focused on creating intuitive and performant web experiences.
-            Bridging the gap between design and development.
+          <p className="whitespace-pre-line text-zinc-600 dark:text-zinc-400">
+            {PROFESSIONAL_SUMMARY}
           </p>
         </div>
       </motion.section>
@@ -152,8 +210,9 @@ export default function Personal() {
           {PROJECTS.map((project) => (
             <div key={project.name} className="space-y-2">
               <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                <ProjectVideo src={project.video} />
+                <ProjectMedia video={project.video} image={project.image} />
               </div>
+              <span className='text-zinc-600 dark:text-zinc-400 text-xs'>{project.date}</span>
               <div className="px-1">
                 <a
                   className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
@@ -161,11 +220,23 @@ export default function Personal() {
                   target="_blank"
                 >
                   {project.name}
-                  <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full"></span>
+                  <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full dark:bg-zinc-50"></span>
                 </a>
                 <p className="text-base text-zinc-600 dark:text-zinc-400">
                   {project.description}
                 </p>
+                {project.technologies && (
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-full bg-zinc-100 px-2 py-1 text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           ))}
@@ -191,18 +262,25 @@ export default function Personal() {
                 size={64}
               />
               <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
-                <div className="relative flex w-full flex-row justify-between">
-                  <div>
-                    <h4 className="font-normal dark:text-zinc-100">
-                      {job.title}
-                    </h4>
-                    <p className="text-zinc-500 dark:text-zinc-400">
-                      {job.company}
+                <div className="relative flex w-full flex-col space-y-2">
+                  <div className="flex justify-between">
+                    <div>
+                      <h4 className="font-normal dark:text-zinc-100">
+                        {job.title}
+                      </h4>
+                      <p className="text-zinc-500 dark:text-zinc-400">
+                        {job.company}
+                      </p>
+                    </div>
+                    <p className="text-zinc-600 dark:text-zinc-400">
+                      {job.start} - {job.end}
                     </p>
                   </div>
-                  <p className="text-zinc-600 dark:text-zinc-400">
-                    {job.start} - {job.end}
-                  </p>
+                  {job.description && (
+                    <p className="whitespace-pre-line text-sm text-zinc-600 dark:text-zinc-400">
+                      {job.description}
+                    </p>
+                  )}
                 </div>
               </div>
             </a>
@@ -210,41 +288,43 @@ export default function Personal() {
         </div>
       </motion.section>
 
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-3 text-lg font-medium">Blog</h3>
-        <div className="flex flex-col space-y-0">
-          <AnimatedBackground
-            enableHover
-            className="h-full w-full rounded-lg bg-zinc-100 dark:bg-zinc-900/80"
-            transition={{
-              type: 'spring',
-              bounce: 0,
-              duration: 0.2,
-            }}
-          >
-            {BLOG_POSTS.map((post) => (
-              <Link
-                key={post.uid}
-                className="-mx-3 rounded-xl px-3 py-3"
-                href={post.link}
-                data-id={post.uid}
-              >
-                <div className="flex flex-col space-y-1">
-                  <h4 className="font-normal dark:text-zinc-100">
-                    {post.title}
-                  </h4>
-                  <p className="text-zinc-500 dark:text-zinc-400">
-                    {post.description}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </AnimatedBackground>
-        </div>
-      </motion.section>
+      {BLOG_POSTS.length > 0 && (
+        <motion.section
+          variants={VARIANTS_SECTION}
+          transition={TRANSITION_SECTION}
+        >
+          <h3 className="mb-3 text-lg font-medium">Blog</h3>
+          <div className="flex flex-col space-y-0">
+            <AnimatedBackground
+              enableHover
+              className="h-full w-full rounded-lg bg-zinc-100 dark:bg-zinc-900/80"
+              transition={{
+                type: 'spring',
+                bounce: 0,
+                duration: 0.2,
+              }}
+            >
+              {BLOG_POSTS.map((post) => (
+                <Link
+                  key={post.uid}
+                  className="-mx-3 rounded-xl px-3 py-3"
+                  href={post.link}
+                  data-id={post.uid}
+                >
+                  <div className="flex flex-col space-y-1">
+                    <h4 className="font-normal dark:text-zinc-100">
+                      {post.title}
+                    </h4>
+                    <p className="text-zinc-500 dark:text-zinc-400">
+                      {post.description}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </AnimatedBackground>
+          </div>
+        </motion.section>
+      )}
 
       <motion.section
         variants={VARIANTS_SECTION}
