@@ -47,7 +47,7 @@ export const PROJECTS: Project[] = [
     id: 'project1',
     date: '2025',
     technologies: ['Django', 'Django REST Framework', 'PostgreSQL', 'React', 'Tailwind CSS', 'JWT'],
-    image: '/MoreHealth.png'
+    image: '/MoreHealthHome.png'
   },
   {
     name: 'Fresh-Cart (React)',

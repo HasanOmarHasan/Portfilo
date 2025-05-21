@@ -110,6 +110,7 @@ function ProjectMedia({ video, image }: ProjectMediaProps) {
               fill
               className="cursor-zoom-in object-cover transition-transform duration-300 hover:scale-105"
               priority
+              
             />
           </div>
         </MorphingDialogTrigger>
