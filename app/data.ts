@@ -98,7 +98,7 @@ export const PROJECTS: Project[] = [
       'JWT',
       'React Query',
     ],
-    video: '/morehealth.MP4',
+   
     image: '/morehealthHome.png',
   },
   {
