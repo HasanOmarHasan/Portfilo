@@ -1,0 +1,202 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot,
+    top=2 cm,
+    bottom=2 cm,
+    left=2 cm,
+    right=2 cm,
+    footskip=1.0 cm,
+]{geometry}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{primaryColor}{RGB}{0, 0, 0}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage[
+    pdftitle={Hassan Omar Hassan Ali - CV},
+    pdfauthor={Hassan Omar Hassan Ali},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{changepage}
+\usepackage{paracol}
+\usepackage{ifthen}
+\usepackage{needspace}
+\usepackage{iftex}
+
+% Ensure machine readability / ATS compliance:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\columnsep}{0.15cm}
+\pagenumbering{gobble}
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+\titlespacing{\section}{-1pt}{0.3 cm}{0.2 cm}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$}
+\newenvironment{highlights}{
+    \begin{itemize}[topsep=0.10 cm,parsep=0.10 cm,partopsep=0pt,itemsep=0pt,leftmargin=10pt]
+}{
+    \end{itemize}
+}
+\newenvironment{onecolentry}{\begin{adjustwidth}{0cm}{0cm}}{\end{adjustwidth}}
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+}
+
+% Header
+\begin{document}
+\begin{center}
+    {\fontsize{20pt}{20pt}\selectfont \textbf{Hassan Omar Hassan Ali}} \\[6pt]
+    \textbf{Full-Stack Developer (React.js / Next.js / Node.js / NestJS)} \\[4pt]
+    \href{mailto:hassan.omar.shamy@gmail.com}{hassan.omar.shamy@gmail.com} $|$ 
+    \href{tel:+201153445721}{+20 1153445721} $|$ 
+    Cairo, Egypt \\[4pt]
+    \href{https://portfilo-orpin-phi.vercel.app}{Portfolio} $|$ 
+    \href{https://linkedin.com/in/hasanomarhasan}{linkedin.com/in/hasanomarhasan} $|$ 
+    \href{https://github.com/HasanOmarHasan}{GitHub}
+\end{center}
+
+\vspace{6pt}
+
+% Summary
+\section{Professional Summary}
+\begin{onecolentry}
+Full-Stack Developer with strong expertise in \textbf{React.js, ( familer Next.js ), Node.js, Express.js, and NestJS}, delivering end-to-end solutions from backend architecture to responsive user interfaces. Skilled in designing scalable \textbf{RESTful APIs}, integrating secure authentication, and optimizing system performance. Hands-on experience with \textbf{MongoDB, PostgreSQL, MySQL}, containerization, and CI/CD pipelines. Strong foundation in \textbf{OOP, SOLID, and Clean Code}, with a track record of delivering products that improve user experience and reduce operational costs.
+\end{onecolentry}
+
+% Skills
+\section{Skills}
+\begin{onecolentry}
+\textbf{Frontend:} React.js, Next.js, HTML5, CSS3, Bootstrap, TailwindCSS, JavaScript (ES6+), TypeScript \\
+\textbf{Backend:} Node.js, Express.js, NestJS, Django, RESTful APIs, Event-driven Architecture \\
+\textbf{Databases:} MongoDB, PostgreSQL, MySQL \\
+\textbf{Testing:} Jest, Unit Tests, Integration Tests, TDD \\
+\textbf{DevOps:} GitHub Actions, CI/CD pipelines, Docker, AWS/GCP (familiar), Azure (basic exposure) \\
+\textbf{Other:} Authentication \& Authorization (JWT/OAuth2), Monitoring, Performance Optimization, Security/Compliance \\
+\textbf{Soft Skills:} Communication, Teamwork, Agile Collaboration, Problem-Solving, Flexibility, Self-Discipline, Fast Learning
+\end{onecolentry}
+
+% Experience
+\section{Experience}
+
+\begin{adjustwidth}{0cm}{0cm}
+\begin{tabularx}{\textwidth}{X r}
+\textbf{Full-Stack Developer (Freelance)} – Cairo, Egypt & 2025 – Present \\
+\end{tabularx}
+\end{adjustwidth}
+
+\begin{onecolentry}
+\begin{highlights}
+    \item Delivered full-stack web apps combining \textbf{React.js/Next.js frontends} with \textbf{Node.js/NestJS backends}.
+    \item Built secure and scalable RESTful APIs, serving 1,000+ users.
+    \item Implemented CI/CD pipelines using GitHub Actions, reducing deployment time by \textbf{30\%}.
+    \item Optimized system performance with caching/monitoring, reducing response times by \textbf{40\%}.
+    \item Collaborated with clients on architecture, database design, and UI/UX features.
+\end{highlights}
+\end{onecolentry}
+
+% Projects
+\section{Projects}
+
+\begin{adjustwidth}{0cm}{0cm}
+\begin{tabularx}{\textwidth}{X r}
+\textbf{Togaar – E-Commerce for Arabic Culture} (\href{https://github.com/HasanOmarHasan/Togaar-E-Commerce-for-Arabic-Culture}{GitHub} $|$  \href{https://documenter.getpostman.com/view/32860449/2sB3HtFcZn}{Postman}) & 2025 \\
+\end{tabularx}
+\end{adjustwidth}
+\begin{onecolentry}
+\begin{highlights}
+    \item Full-stack solution with \textbf{React/Next.js frontend} and \textbf{Node.js/Express backend}.
+    \item Integrated MongoDB, Stripe API, and AI-powered chatbot; handled 500+ monthly orders.
+\end{highlights}
+\end{onecolentry}
+
+\begin{adjustwidth}{0cm}{0cm}
+\begin{tabularx}{\textwidth}{@{} >{\raggedright\arraybackslash}X >{\raggedleft\arraybackslash}p{4.5cm} @{}}
+\textbf{Heal-Gen – AI-Powered Health Assistant} (\href{https://heal-gen.vercel.app}{Live} $|$ \href{https://github.com/HasanOmarHasan/MoreHealth}{GitHub}) & 2025 \\
+\end{tabularx}
+\end{adjustwidth}
+\begin{onecolentry}
+\begin{highlights}
+    \item Built with \textbf{Django (backend)} + \textbf{React (frontend)}, PostgreSQL, and Socket.IO.
+    \item Delivered GenAI-powered chatbot with 85\%+ user satisfaction in testing.
+\end{highlights}
+\end{onecolentry}
+
+\begin{adjustwidth}{0cm}{0cm}
+\begin{tabularx}{\textwidth}{@{} >{\raggedright\arraybackslash}X >{\raggedleft\arraybackslash}p{4.5cm} @{}}
+\textbf{Car Price Prediction} (\href{https://www.kaggle.com/datasets/johndoe11311/vehicle-data}{Dataset} $|$ \href{https://drive.google.com/file/d/1Rx_XLY0MVc_5n2MVBLdee2g96wcVLJYe/view?usp=drive_link}{Doc}) & 2025 \\
+\end{tabularx}
+\end{adjustwidth}
+\begin{onecolentry}
+\begin{highlights}
+    \item ML/DL project using TensorFlow, Scikit-learn, Pandas, and NumPy for predictive analytics.
+    \item Achieved \textbf{92\% prediction accuracy} on test dataset.
+\end{highlights}
+\end{onecolentry}
+
+\begin{adjustwidth}{0cm}{0cm}
+\begin{tabularx}{\textwidth}{@{} >{\raggedright\arraybackslash}X >{\raggedleft\arraybackslash}p{4.5cm} @{}}
+\textbf{Fresh-Cart} (\href{https://github.com/HasanOmarHasan/Fresh-Cart-E-commers}{GitHub}) & 2024 \\
+\end{tabularx}
+\end{adjustwidth}
+\begin{onecolentry}
+\begin{highlights}
+    \item React \& Bootstrap e-commerce front-end simulating full shopping workflow.
+\end{highlights}
+\end{onecolentry}
+
+% Education
+\section{Education}
+\begin{adjustwidth}{0cm}{0cm}
+\begin{tabularx}{\textwidth}{@{} >{\raggedright\arraybackslash}X >{\raggedleft\arraybackslash}p{4.5cm} @{}}
+\textbf{Bachelor's in Information and Communication Technology} & 2021 – 2025 \\
+\textit{New Cairo Technological University (NCTU) – Cairo, Egypt} & \\
+Specialization: Software Engineering and Artificial Intelligence & \\
+\end{tabularx}
+\end{adjustwidth}
+
+% Training & Internships
+\section{Training \& Internships}
+\begin{adjustwidth}{0cm}{0cm}
+\begin{tabularx}{\textwidth}{@{} >{\raggedright\arraybackslash}X >{\raggedleft\arraybackslash}p{4.5cm} @{}}
+\textbf{Frontend Development Diploma}, Route Academy – Cairo, Egypt & Sep 2023 – Feb 2024 \\
+\textbf{Software Testing Internship}, Orange Digital Center – Cairo, Egypt & Aug 2022 \\
+\end{tabularx}
+\end{adjustwidth}
+
+% Languages
+\section{Languages}
+\begin{onecolentry}
+Arabic: Native \quad | \quad English: B2
+\end{onecolentry}
+\end{document}
