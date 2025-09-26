@@ -99,7 +99,7 @@ export const PROJECTS: Project[] = [
       'React Query',
     ],
    
-    image: '/morehealthHome.png',
+    image: '/heal.png',
   },
   {
     name: 'Car Price Prediction (Machine Learning)',
